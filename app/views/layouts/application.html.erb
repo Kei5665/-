@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ウチの食材管理</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  
+<header>
+      <div class="header-logo">
+        <% if @current_user %>
+          <%= link_to("ウチの食材管理", "/posts/index") %>
+        <% else %>
+          <%= link_to("ウチの食材管理", "/") %>
+        <% end %>
+      </div>
+      <ul class="header-menus">
+        <!-- if文の条件を書き換えてください -->
+        <% if @current_user %>
+          <li>
+            <!-- Log In中のユーザーの名前を表示し、詳細ページのリンクとなるように書き換えてください -->
+         <%= link_to(@current_user.name, "/users/#{@current_user.id}") %>
+
+          </li>
+        <li>
+          <!-- ここにlink_toメソッドを用いて投稿一覧ページへのリンクを作成してください -->
+         <%=link_to("食材一覧","/posts/index") %>
+
+        </li>
+        <li>
+         <%=link_to("新規食材","/posts/new") %>
+
+        </li>
+        <li>
+         <%=link_to("カテゴリー","/category/index") %>
+
+        </li>
+         <li>
+          <%= link_to("ユーザー一覧", "/users/index") %>
+        </li>
+          <li>
+            <!-- ログアウト用のリンクを追加してください -->
+            <%= link_to("ログアウト", "/logout", {method: "post"}) %>
+          </li>
+        <%else%>
+        <li>
+          <!-- 以下のリンクをlink_toメソッドを用いて変更してください -->
+        <%=link_to("このサービスは何？","/about") %>
+        </li>
+         <li>
+          <%= link_to("新規登録", "/signup") %>
+        </li>
+        <li>
+          <!-- Log Inページへのリンクを作成してください -->
+          <%= link_to("ログイン", "/login") %>
+        </li>
+        <%end%>
+      </ul>
+    </header>
+    <!-- flash[:notice]に代入されたメッセージを表示してください -->
+    <% if flash[:notice] %>
+      <div class="flash">
+        <%=flash[:notice] %>
+      </div>
+    <% end %>
+  <body>
+    <%= yield %>
+  </body>
+</html>

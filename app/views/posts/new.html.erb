@@ -1,0 +1,25 @@
+<div class="main posts-new category">
+  <div class="container">
+    <h1 class="form-heading">投稿する</h1>
+    <%= form_tag("/posts/create") do %>
+    <div class="form">
+      <div class="form-body">
+          <% @post.errors.full_messages.each do |message| %>
+            <div class="form-error">
+              <%= message %>
+            </div>
+          <% end %>
+        <P>内容</P>
+        <textarea name="content"><%= @post.content%></textarea>
+        <P>個数</P>
+        <input name="numb" value="<%= @post.numb%>">
+        <p>カテゴリー</p>
+          <input type="radio" name="category" value="肉類">肉
+          <input type="radio" name="category" value="魚介類">魚介
+          <input type="radio" name="category" value="チーズ">チーズ
+        <input type="submit" value="投稿">
+      </div>
+    </div>
+     <%end%>
+  </div>
+</div>

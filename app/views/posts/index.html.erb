@@ -1,0 +1,23 @@
+
+<div class="main posts-index">
+  <div class="container">
+    <h1 class="form-heading">記録一覧 </h1>
+    <% @posts.each do |post| %>
+      <div class="posts-index-item">
+        <div class="post-left">
+
+        </div>
+        <div class="post-right">
+          <div class="post-user-name">
+          <p><%=  post.created_at.strftime('%m/%d %H:%M') %></p>
+          <p><%= post.category_id %></p>
+          </div>
+          <div class="d-flex">
+            <p class="syokuzai_name"><%=link_to(post.content,"/posts/#{post.id}") %></p>
+            <p><%= post.numb %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

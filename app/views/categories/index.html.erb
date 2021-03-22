@@ -1,0 +1,21 @@
+<div class="main users-index">
+  <div class="container category">
+    <h1 class="users-heading">カテゴリー一覧</h1>
+    <!-- 以下の<% %>を使ってeach文を追加してください -->
+
+    <% @categories.each do |user| %>
+      <div class="posts-index-item">
+        <div class="user-left">
+          <!-- <img>タグを用いて、プロフィール画像を表示してください-->
+        <img src="<%="/category_images/#{user.image_name}"%>">
+
+        </div>
+        <div class="user-right">
+          <!-- post.contentを使って書き換えてください -->
+          <%= link_to(user.name, "/category/#{user.id}") %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+</div>
