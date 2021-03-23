@@ -151,10 +151,12 @@ header {
 /* about ================================ */
 .about-main {
   padding: 180px 8% 0;
+  height:100vh;
   color: white;
   background-image: url("/top2.jpg");
   background-size:cover;
   padding-bottom:50px;
+  text-align:center;
 }
 
 .about-main h2 {
